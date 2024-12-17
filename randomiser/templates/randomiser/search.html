@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <link rel="stylesheet" href="{% static 'randomiser/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <form method="GET" action="">
+            <input type="text" name="q" placeholder="Введите запрос" value="{{ request.GET.q }}">
+            <button type="submit">Поиск</button>
+        </form>
+
+        <div class="card-container">
+            {% for domain in results %}
+            <div class="card">
+                <h3>{{ domain.domain_name }}</h3>
+                <p>Регистратор: {{ domain.registrar_name }}</p>
+                <p>Срок истечения: {{ domain.expiry_date }}</p>
+                <a href="http://{{ domain.domain_name }}" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if results|length == 0 %}
+        <p>No results found.</p>
+        {% endif %}
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('show');
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

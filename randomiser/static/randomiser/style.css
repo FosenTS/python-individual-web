@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+form {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+input[type="text"] {
+    padding: 8px;
+    font-size: 16px;
+    flex: 1;
+    max-width: 300px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    position: relative; /* Для позиционирования кнопки внутри */
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    padding-right: 60px;
+    margin-bottom: 20px;
+    width: calc(33.333% - 10px);
+    box-sizing: border-box;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.visit-button {
+    position: absolute;
+    right: 10px;
+    top: 50%; /* центрирование вертикальное */
+    transform: translateY(-50%); /* смещение для полного вертикального центрирования */
+    width: 40px; /* Квадратная кнопка */
+    height: 40px; /* Квадратная кнопка */
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.visit-button i {
+    font-size: 16px; /* Задаем размер иконки */
+}
+
+.visit-button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .card {
+        width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 100%;
+    }
+}
